@@ -1,7 +1,17 @@
+import { Experience } from "@/components/experience";
+import { Footer } from "@/components/footer";
+import { Hero } from "@/components/hero";
+import { Projects } from "@/components/projects";
+import { Skills } from "@/components/skills";
+
 export default function Home() {
   return (
-    <main>
-      <h1 className="flex items-center justify-center h-screen text-4xl">Welcome to My Portfolio</h1>
-    </main>
+    <>
+      <Hero />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Footer />
+    </>
   );
 }
