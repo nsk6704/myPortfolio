@@ -1,7 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Vend+Sans:wght@300;400;500;600;700&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* ===================== */
+/* CSS VARIABLES */
+/* ===================== */
 
 :root {
   --background: oklch(94.27% 0.0268 242.57);
@@ -13,6 +19,7 @@
   --ring: oklch(0% 0 0);
   --overlay: oklch(0% 0 0 / 0.8);
   --shadow: 4px 4px 0px 0px var(--border);
+
   --chart-1: #0099FF;
   --chart-2: #FF4D50;
   --chart-3: #FACC00;
@@ -29,7 +36,9 @@
   --main: oklch(61.9% 0.16907 248.5982);
   --border: oklch(0% 0 0);
   --ring: oklch(100% 0 0);
+  --overlay: oklch(0% 0 0 / 0.8);
   --shadow: 4px 4px 0px 0px var(--border);
+
   --chart-1: #008AE5;
   --chart-2: #FF6669;
   --chart-3: #E0B700;
@@ -38,7 +47,12 @@
   --chart-active-dot: #fff;
 }
 
+/* ===================== */
+/* TAILWIND v4 TOKENS */
+/* ===================== */
+
 @theme inline {
+  /* colors */
   --color-main: var(--main);
   --color-background: var(--background);
   --color-secondary-background: var(--secondary-background);
@@ -47,28 +61,45 @@
   --color-border: var(--border);
   --color-overlay: var(--overlay);
   --color-ring: var(--ring);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
+  /* spacing / radius / shadow */
   --spacing-boxShadowX: 4px;
   --spacing-boxShadowY: 4px;
   --spacing-reverseBoxShadowX: -4px;
   --spacing-reverseBoxShadowY: -4px;
   --radius-base: 5px;
   --shadow-shadow: var(--shadow);
+
+  /* fonts (FIXED) */
+  --font-base: "Vend Sans", sans-serif;
+  --font-heading: "Vend Sans", sans-serif;
+
   --font-weight-base: 500;
   --font-weight-heading: 700;
+
+  /* optional utility */
+  --font-sans: "Vend Sans", sans-serif;
 }
-  
+
+/* ===================== */
+/* BASE STYLES */
+/* ===================== */
+
 @layer base {
   body {
-    @apply text-foreground font-base bg-background;
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-base);
+    @apply text-foreground bg-background;
   }
 
-  h1, h2, h3, h4, h5, h6{
-    @apply font-heading;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-heading);
   }
 }
