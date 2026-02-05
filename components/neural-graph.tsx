@@ -60,7 +60,7 @@ export function NeuralGraph() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div ref={containerRef} className="w-full">
+        <div ref={containerRef} className="w-full overflow-hidden rounded-base border-2 border-border relative">
           <ForceGraph2D
             ref={graphRef}
             graphData={techStackData}
