@@ -7,7 +7,8 @@ export const SITE_CONFIG = {
   email: 'sakethkashyap.nagendra@gmail.com',
   location: 'Bengaluru, India',
   github: 'https://github.com/nsk6704',
-  linkedin: 'https://www.linkedin.com/in/saketh-kashyap-nagendra', // Update this with your actual LinkedIn URL
+  linkedin: 'https://www.linkedin.com/in/saketh-kashyap-nagendra/',
+  leetcode: 'https://leetcode.com/u/saketh6704/',
   availability: 'Available for Opportunities',
 }
 
@@ -19,9 +20,17 @@ export const FEATURED_PROJECTS = [
 
 // Project descriptions for GitHub repos
 export const PROJECT_DESCRIPTIONS: Record<string, string> = {
-  Credify: 'A credential verification platform built with TypeScript, featuring secure authentication and document management capabilities. Implements modern security practices and user-friendly interfaces.',
-  InterviewAssistant: 'An AI-powered interview preparation tool built for EightfoldAI assessment. Combines TypeScript frontend with Python backend for intelligent question generation and feedback.',
+  Credify: 'A personal wellness and finance tracker designed as an all-in-one companion for monitoring habits, financial goals, and overall well-being. Built to help users maintain a balanced lifestyle.',
+  InterviewAssistant: 'An AI-powered interview practice application built with FastAPI, React, and Groq\'s Llama 3.3 models. Designed to simulate realistic technical interviews with a focus on conversational quality, adaptability, and professional feedback.',
   Algoviz: 'A full-stack platform with 15+ visualized algorithms across sorting, graphs, AI/ML, and theory of computation. Built with Next.js, FastAPI, and LLaMA 3 for interactive learning with step controls and zoom/pan support.',
+}
+
+// Project complexity metrics (replaces star/fork counts)
+export const PROJECT_METRICS: Record<string, string> = {
+  Credify: 'Wellness & Finance',
+  InterviewAssistant: 'AI-Powered Tool',
+  Algoviz: '15+ Visualizations',
+  AgriGuard: '37 Classes • CNN Model',
 }
 
 // Custom project not on GitHub
