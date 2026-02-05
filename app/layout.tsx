@@ -16,13 +16,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Saketh Kashyap Nagendra | Software Engineer & Data Science Student",
-  description: "Software Engineering Intern at Boeing | Data Science Student at IIT Madras. Passionate about full-stack development, machine learning, and building impactful software solutions.",
+  title: "Saketh Kashyap Nagendra",
+  description: "Data Science Intern at str8bat | Passionate about full-stack development, machine learning, and building impactful software solutions.",
   keywords: ["Software Engineer", "Data Science", "Full Stack Developer", "React", "Next.js", "Machine Learning", "TypeScript", "Python", "Boeing", "IIT Madras"],
   authors: [{ name: "Saketh Kashyap Nagendra" }],
   openGraph: {
     title: "Saketh Kashyap Nagendra | Portfolio",
-    description: "Software Engineering Intern at Boeing | Data Science Student at IIT Madras",
+    description: "Data Science Intern at str8bat | Passionate about full-stack development, machine learning, and building impactful software solutions.",
     type: "website",
     locale: "en_US",
   },
