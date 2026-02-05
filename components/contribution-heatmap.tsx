@@ -103,7 +103,7 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
             <div className="text-2xl font-bold">
               <CountUp end={data.totalContributions} duration={1.5} />
             </div>
-            <div className="text-xs text-foreground/60">Total Contributions</div>
+            <div className="text-xs text-foreground/60">Total Contributions in the past one year</div>
           </div>
         </div>
       </CardContent>
