@@ -4,7 +4,7 @@ import { Hero } from "@/components/hero";
 import { Projects } from "@/components/projects";
 import { Skills } from "@/components/skills";
 import { About } from "@/components/about";
-import { GitHubStats } from "@/components/github-stats";
+import { DeveloperStats } from "@/components/developer-stats";
 import { Contact } from "@/components/contact";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <About />
       <Experience />
       <Projects />
-      <GitHubStats />
+      <DeveloperStats />
       <Skills />
       <Contact />
       <Footer />
