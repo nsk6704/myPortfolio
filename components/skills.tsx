@@ -1,19 +1,23 @@
+'use client'
+
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from "framer-motion"
+import { fadeInUp, staggerContainer } from "@/lib/animations"
 
 export function Skills() {
     const skills = [
         {
             category: "Programming Languages",
-            items: ["C", "Python", "Java", "JavaScript", "SQL"],
+            items: ["C", "Python", "Java", "JavaScript", "TypeScript", "SQL"],
         },
         {
             category: "Frameworks & Libraries",
-            items: ["Flask", "React", "Next.js", "NumPy", "Pandas", "Tailwind CSS"],
+            items: ["Flask", "React", "Next.js", "React Native", "NumPy", "Pandas", "Tailwind CSS", "FastAPI"],
         },
         {
             category: "Tools & Technologies",
-            items: ["Git", "pgAdmin", "Firebase", "Vim", "Docker", "Postman"],
+            items: ["Git", "pgAdmin", "Firebase", "Vim", "Docker", "Postman", "TensorFlow"],
         },
     ]
 
@@ -28,10 +32,24 @@ export function Skills() {
 
     return (
         <section id="skills" className="container py-24 sm:py-32 mx-auto px-4">
-            <h2 className="mb-12 text-3xl font-bold md:text-5xl text-center">Skills & Certifications</h2>
+            <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="mb-12 text-3xl font-bold md:text-5xl text-center"
+            >
+                Skills & Certifications
+            </motion.h2>
 
-            <div className="grid gap-8 md:grid-cols-2">
-                <div className="space-y-8">
+            <motion.div 
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="grid gap-8 md:grid-cols-2"
+            >
+                <motion.div variants={fadeInUp} className="space-y-8">
                     <h3 className="text-2xl font-bold font-heading">Technical Skills</h3>
                     <div className="grid gap-6">
                         {skills.map((skillGroup, index) => (
@@ -51,9 +69,9 @@ export function Skills() {
                             </Card>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="space-y-8">
+                <motion.div variants={fadeInUp} className="space-y-8">
                     <h3 className="text-2xl font-bold font-heading">Certifications</h3>
                     <Card className="shadow-shadow border-2 h-full">
                         <CardContent className="pt-6">
@@ -67,8 +85,8 @@ export function Skills() {
                             </ul>
                         </CardContent>
                     </Card>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     )
 }
