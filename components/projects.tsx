@@ -5,12 +5,14 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Github, ExternalLink, Star, GitFork } from "lucide-react"
+import { Github, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
+import { GridBackground } from "@/components/ui/grid-background"
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import type { GitHubRepo } from '@/types/github'
-import { PROJECT_DESCRIPTIONS, CUSTOM_PROJECTS } from '@/lib/constants'
+import { PROJECT_DESCRIPTIONS, CUSTOM_PROJECTS, PROJECT_METRICS } from '@/lib/constants'
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
@@ -22,8 +24,7 @@ interface Project {
     github: string | null
     demo: string | null
   }
-  stars?: number
-  forks?: number
+  metric?: string
 }
 
 export function Projects() {
@@ -31,7 +32,7 @@ export function Projects() {
 
   const getFeaturedProjects = (): Project[] => {
     const projects: Project[] = []
-    
+
     // Add GitHub projects
     if (repos) {
       const credify = repos.find((r) => r.name === 'Credify')
@@ -42,13 +43,12 @@ export function Projects() {
         projects.push({
           title: 'Credify',
           description: PROJECT_DESCRIPTIONS.Credify,
-          tech: ['TypeScript', 'Next.js', 'Authentication', 'Security'],
+          tech: ['TypeScript', 'Expo', 'React Native', 'SQLite'],
           links: {
             github: credify.html_url,
-            demo: credify.homepage
+            demo: 'https://credify-website-sandy.vercel.app/'
           },
-          stars: credify.stargazers_count,
-          forks: credify.forks_count
+          metric: PROJECT_METRICS.Credify
         })
       }
 
@@ -61,8 +61,7 @@ export function Projects() {
             github: interview.html_url,
             demo: interview.homepage
           },
-          stars: interview.stargazers_count,
-          forks: interview.forks_count
+          metric: PROJECT_METRICS.InterviewAssistant
         })
       }
 
@@ -75,28 +74,32 @@ export function Projects() {
             github: algoviz.html_url,
             demo: algoviz.homepage || 'https://algoviz-iota.vercel.app'
           },
-          stars: algoviz.stargazers_count,
-          forks: algoviz.forks_count
+          metric: PROJECT_METRICS.Algoviz
         })
       }
     }
 
     // Add custom project (AgriGuard)
-    projects.push(CUSTOM_PROJECTS.AgriGuard)
+    projects.push({
+      ...CUSTOM_PROJECTS.AgriGuard,
+      metric: PROJECT_METRICS.AgriGuard
+    })
 
     return projects
   }
 
   if (isLoading) {
     return (
-      <section id="projects" className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
-        <h2 className="mb-12 text-3xl font-bold md:text-5xl text-center">Featured Projects</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
-          {[1, 2, 3, 4].map(i => (
-            <Skeleton key={i} className="h-[350px] border-2" />
-          ))}
-        </div>
-      </section>
+      <GridBackground>
+        <section id="projects" className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
+          <h2 className="mb-12 text-3xl font-bold md:text-5xl text-center">Featured Projects</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+            {[1, 2, 3, 4].map(i => (
+              <Skeleton key={i} className="h-[350px] border-2" />
+            ))}
+          </div>
+        </section>
+      </GridBackground>
     )
   }
 
@@ -108,74 +111,74 @@ export function Projects() {
   const projects = getFeaturedProjects()
 
   return (
-    <section id="projects" className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
-      <motion.h2 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="mb-12 text-3xl font-bold md:text-5xl text-center"
-      >
-        Featured Projects
-      </motion.h2>
-      <motion.div 
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        className="grid gap-8 md:grid-cols-2 lg:gap-12"
-      >
-        {projects.map((project, index) => (
-          <motion.div key={index} variants={fadeInUp}>
-            <Card className="flex flex-col border-2 shadow-shadow bg-background transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--border)] h-full">
-            <CardHeader>
-              <CardTitle className="text-2xl">{project.title}</CardTitle>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {project.tech.map((t) => (
-                  <Badge key={t} variant="neutral" className="border-2 border-border font-base">
-                    {t}
-                  </Badge>
-                ))}
-              </div>
-              {project.stars !== undefined && (
-                <div className="flex items-center gap-4 text-sm text-foreground/70 mt-2">
-                  <span className="flex items-center gap-1">
-                    <Star className="h-4 w-4" /> {project.stars}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <GitFork className="h-4 w-4" /> {project.forks}
-                  </span>
-                </div>
-              )}
-            </CardHeader>
-            <CardContent className="flex-1">
-              <p className="text-foreground/90">{project.description}</p>
-            </CardContent>
-            <CardFooter className="flex gap-4">
-              {project.links.github && (
-                <Link href={project.links.github} target="_blank" className="flex-1">
-                  <Button size="sm" variant="neutral" className="w-full">
-                    <Github className="mr-2 h-4 w-4" /> Code
-                  </Button>
-                </Link>
-              )}
-              {project.links.demo && (
-                <Link href={project.links.demo} target="_blank" className="flex-1">
-                  <Button size="sm" className="w-full">
-                    <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-                  </Button>
-                </Link>
-              )}
-              {!project.links.github && !project.links.demo && (
-                <div className="flex-1 text-center text-sm text-foreground/60">
-                  Links coming soon
-                </div>
-              )}
-            </CardFooter>
-            </Card>
-          </motion.div>
-        ))}
-      </motion.div>
-    </section>
+    <GridBackground>
+      <section id="projects" className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-3xl font-bold md:text-5xl text-center"
+        >
+          <TextGenerateEffect words="Featured Projects" />
+        </motion.h2>
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="grid gap-8 md:grid-cols-2 lg:gap-12"
+        >
+          {projects.map((project, index) => (
+            <motion.div key={index} variants={fadeInUp}>
+              <Card className="flex flex-col border-2 shadow-shadow bg-background transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--border)] h-full">
+                <CardHeader>
+                  <CardTitle className="text-2xl">{project.title}</CardTitle>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {project.tech.map((t) => (
+                      <Badge key={t} variant="neutral" className="border-2 border-border font-base">
+                        {t}
+                      </Badge>
+                    ))}
+                  </div>
+                  {project.metric && (
+                    <div className="mt-2">
+                      <Badge variant="neutral" className="border-2 border-main text-main font-medium bg-main/10">
+                        {project.metric}
+                      </Badge>
+                    </div>
+                  )}
+                </CardHeader>
+                <CardContent className="flex-1">
+                  <p className="text-foreground/90">{project.description}</p>
+                </CardContent>
+                <CardFooter className="flex gap-4">
+                  {project.links.github && (
+                    <Link href={project.links.github} target="_blank" className="flex-1">
+                      <Button size="sm" variant="neutral" className="w-full">
+                        <Github className="mr-2 h-4 w-4" /> Code
+                      </Button>
+                    </Link>
+                  )}
+                  {project.links.demo && (
+                    <Link href={project.links.demo} target="_blank" className="flex-1">
+                      <Button size="sm" className="w-full">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        {project.title === 'Credify' ? 'Landing Page' : 'Live Demo'}
+                      </Button>
+                    </Link>
+                  )}
+                  {!project.links.github && !project.links.demo && (
+                    <div className="flex-1 text-center text-sm text-foreground/60">
+                      Links coming soon
+                    </div>
+                  )}
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+    </GridBackground>
   )
 }

@@ -33,11 +33,11 @@ export function Footer() {
                     <div className="space-y-4">
                         <h4 className="text-lg font-bold font-heading">Connect</h4>
                         <div className="flex space-x-4">
-                            <Link href="https://github.com" target="_blank" className="rounded-base border-2 border-border bg-white p-2 text-black hover:bg-white/90 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+                            <Link href="https://github.com/nsk6704" target="_blank" className="rounded-base border-2 border-border bg-white p-2 text-black hover:bg-white/90 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
                                 <Github className="h-5 w-5" />
                                 <span className="sr-only">GitHub</span>
                             </Link>
-                            <Link href="https://linkedin.com" target="_blank" className="rounded-base border-2 border-border bg-white p-2 text-black hover:bg-white/90 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+                            <Link href="https://www.linkedin.com/in/saketh-kashyap-nagendra" target="_blank" className="rounded-base border-2 border-border bg-white p-2 text-black hover:bg-white/90 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
                                 <Linkedin className="h-5 w-5" />
                                 <span className="sr-only">LinkedIn</span>
                             </Link>

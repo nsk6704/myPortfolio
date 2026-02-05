@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { fadeInUp, staggerContainer } from "@/lib/animations"
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 
 export function Skills() {
     const skills = [
@@ -39,7 +40,7 @@ export function Skills() {
                 transition={{ duration: 0.5 }}
                 className="mb-12 text-3xl font-bold md:text-5xl text-center"
             >
-                Skills & Certifications
+                <TextGenerateEffect words="Skills & Certifications" />
             </motion.h2>
 
             <motion.div 

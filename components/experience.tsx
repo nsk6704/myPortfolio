@@ -9,6 +9,17 @@ import {
 export function Experience() {
     const experiences = [
         {
+            company: "str8bat Sport Tech Solutions",
+            role: "Data Science Intern",
+            period: "Jan 2026 – Present",
+            location: "Bengaluru, India",
+            description: [
+                "Refined and preprocessing complex datasets with manual, noisy labels, ensuring high-quality input for model training.",
+                "Improved an existing XGBoost model through extensive feature pruning and hyperparameter tuning, achieving significant performance gains.",
+                "Investigated and implemented diverse strategies to solve specific product-related challenges, focusing on model accuracy and robustness.",
+            ],
+        },
+        {
             company: "Boeing",
             role: "Software Engineering Intern",
             period: "May 2025 – July 2025",
