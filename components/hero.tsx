@@ -65,7 +65,7 @@ export function Hero() {
                         variants={fadeInUp}
                         className="mx-auto mb-8 max-w-2xl text-lg font-medium md:text-xl"
                     >
-                        Data Science Intern at str8bat
+                       AI & Full Stack Development Intern at OnFinance AI<br />
                         <br />
                         Based in Bengaluru, India
                     </motion.p>

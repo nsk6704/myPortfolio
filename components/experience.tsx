@@ -11,7 +11,7 @@ export function Experience() {
         {
             company: "str8bat Sport Tech Solutions",
             role: "Data Science Intern",
-            period: "Jan 2026 – Present",
+            period: "Jan 2026 – Feb 2026 (1 month)",
             location: "Bengaluru, India",
             description: [
                 "Refined and preprocessing complex datasets with manual, noisy labels, ensuring high-quality input for model training.",

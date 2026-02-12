@@ -28,14 +28,15 @@ export function About() {
           <Card className="border-0 shadow-none bg-transparent">
             <CardContent className="pt-6 space-y-6">
               <p className="text-lg leading-relaxed">
-                I'm a Data Science Intern at str8bat Sport Tech Solutions and a student at RV College of Engineering.
-                I'm also pursuing a BS in Data Science from IIT Madras. Based in Bengaluru, India,
-                I'm passionate about building impactful software solutions that solve real-world problems.
+                Currently working as an AI and Full Stack Developer Intern at OnFinance AI, 
+                while pursuing a BE in Computer Science from RV College of Engineering and 
+                a BS in Data Science from IIT Madras. Based in Bengaluru, India, with a passion 
+                for building impactful software solutions that solve real-world problems.
               </p>
               <p className="text-lg leading-relaxed">
-                My experience spans full-stack development, machine learning, and data science.
-                I've worked with cutting-edge technologies including React Native, TensorFlow,
-                and various AI APIs to create innovative applications in healthcare, education,
+                Experience spans full-stack development, machine learning, and data science, 
+                with hands-on work using cutting-edge technologies including React Native, TensorFlow, 
+                and various AI APIs to create innovative applications in healthcare, education, 
                 and enterprise solutions.
               </p>
               <div className="grid md:grid-cols-2 gap-6 pt-4">
