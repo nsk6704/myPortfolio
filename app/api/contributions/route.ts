@@ -8,59 +8,94 @@ interface ContributionDay {
   level: number
 }
 
+const GITHUB_GRAPHQL_API = 'https://api.github.com/graphql'
+
+function getContributionLevel(count: number): number {
+  if (count === 0) return 0
+  if (count <= 2) return 1
+  if (count <= 4) return 2
+  if (count <= 6) return 3
+  return 4
+}
+
 export async function GET() {
   try {
     const username = 'nsk6704'
+    const token = process.env.GITHUB_TOKEN
 
-    // Fetch from github-contributions-api (better than Events API)
-    const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch GitHub contributions')
+    if (!token) {
+      throw new Error('GITHUB_TOKEN not configured')
     }
 
-    const data = await response.json()
+    // GraphQL query to fetch contributions for the last year
+    const query = `
+      query($username: String!) {
+        user(login: $username) {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  contributionCount
+                  date
+                }
+              }
+            }
+          }
+        }
+      }
+    `
 
-    // Transform data to match our component's expected format
-    // The API returns { contributions: [ { date, count, level } ] } which matches our need mostly
-    // We just need to ensure the structure aligns
+    const response = await fetch(GITHUB_GRAPHQL_API, {
+      method: 'POST',
+      headers: {
+        'Authorization': `bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query,
+        variables: { username }
+      }),
+    })
 
-    const contributions: ContributionDay[] = data.contributions.map((day: any) => ({
-      date: day.date,
-      count: day.count,
-      level: day.level
-    }))
+    if (!response.ok) {
+      throw new Error(`GitHub GraphQL API error: ${response.statusText}`)
+    }
 
-    // Calculate streaks and totals from this accurate data
-    const totalContributions = data.total[Object.keys(data.total)[0]] || contributions.reduce((acc, day) => acc + day.count, 0)
+    const { data, errors } = await response.json()
+
+    if (errors) {
+      throw new Error(`GraphQL errors: ${JSON.stringify(errors)}`)
+    }
+
+    const calendar = data.user.contributionsCollection.contributionCalendar
+    
+    // Flatten weeks into a single array of days
+    const contributions: ContributionDay[] = calendar.weeks
+      .flatMap((week: any) => week.contributionDays)
+      .map((day: any) => ({
+        date: day.date,
+        count: day.contributionCount,
+        level: getContributionLevel(day.contributionCount)
+      }))
+
+    const totalContributions = calendar.totalContributions
 
     // Calculate current streak
-    // The array is usually sorted by date, but let's be safe
-    const sortedDays = [...contributions].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    const sortedDays = [...contributions].sort((a, b) => 
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    )
 
     let currentStreak = 0
     const today = new Date().toISOString().split('T')[0]
 
-    // Check if the most recent entry is today or yesterday (to allow for timezone diffs)
-    // If the latest entry is older than yesterday, streak might be broken, but let's just count backwards from the last available day
-    // Actually, to be accurate, we should check if the latest day is "connected" to today.
-
-    // Simple streak calculation: count backwards from latest entry that has contributions
-    let streakActive = true
     for (const day of sortedDays) {
       if (day.count > 0) {
         currentStreak++
-        streakActive = true
       } else {
-        // If we hit a zero, streak ends regarding of whether it was active
-        // Exception: if the zero is TODAY (and we haven't committed yet), the streak from yesterday is still valid.
-        // But if we encounter a zero in the past, it breaks.
-
-        // Simplification: Standard GitHub streak logic is contiguous days with > 0.
-        // If we hit a 0, we stop. Use the API's date to check if it's "today" relative to user? 
-        // Let's just trust the sequence.
-        if (day.date === today && day.count === 0) {
-          continue // Skip today if no commits yet, don't break streak from yesterday
+        // Allow today to have 0 contributions without breaking streak
+        if (day.date === today) {
+          continue
         }
         break
       }
@@ -68,7 +103,7 @@ export async function GET() {
 
     return NextResponse.json({
       contributions,
-      currentStreak, // This helps, but the API doesn't give streak directly, so this is an approximation
+      currentStreak,
       totalContributions,
       username,
     })
