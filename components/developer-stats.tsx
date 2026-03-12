@@ -29,7 +29,7 @@ export function DeveloperStats() {
   }
 
   // Show section even if APIs fail, but with fallback
-  const showContributions = contributions && !contributionsError
+  const showContributions = contributions?.contributions && Array.isArray(contributions.contributions) && !contributionsError
 
   return (
     <section className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">

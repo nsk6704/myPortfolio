@@ -28,7 +28,7 @@ export function About() {
           <Card className="border-0 shadow-none bg-transparent">
             <CardContent className="pt-6 space-y-6">
               <p className="text-lg leading-relaxed">
-                Currently working as an AI and Full Stack Developer Intern at OnFinance AI, 
+                Currently working as Full Stack Developer Intern at Ruaa Ventures Private Limited, 
                 while pursuing a BE in Computer Science from RV College of Engineering and 
                 a BS in Data Science from IIT Madras. Based in Bengaluru, India, with a passion 
                 for building impactful software solutions that solve real-world problems.
