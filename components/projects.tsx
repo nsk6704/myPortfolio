@@ -34,7 +34,7 @@ export function Projects() {
     const projects: Project[] = []
 
     // Add GitHub projects
-    if (repos) {
+    if (repos && Array.isArray(repos)) {
       const credify = repos.find((r) => r.name === 'Credify')
       const interview = repos.find((r) => r.name === 'InterviewAssistant')
       const algoviz = repos.find((r) => r.name === 'Algoviz')
