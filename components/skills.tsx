@@ -14,11 +14,11 @@ export function Skills() {
         },
         {
             category: "Frameworks & Libraries",
-            items: ["React", "Next.js", "React Native","Django", "PyTorch", "FastAPI"],
+            items: ["React", "Next.js", "React Native","Django", "PyTorch", "FastAPI","TensorFlow"],
         },
         {
             category: "Tools & Technologies",
-            items: ["Git", "pgAdmin", "Firebase", "Vim", "Docker", "Postman", "TensorFlow"],
+            items: ["Git", "pgAdmin", "Firebase", "Vim", "Docker", "Postman"],
         },
     ]
 
