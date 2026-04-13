@@ -56,8 +56,7 @@ export function About() {
                 <div>
                   <h3 className="font-heading text-xl mb-3">Interests</h3>
                   <p className="text-foreground/90">
-                    Full-stack Development, Machine Learning, Algorithm Visualization,
-                    AI Integration, Open Source Contribution
+                    Frontend, Backend Systems, Mobile, Applied ML, Agentic AI
                   </p>
                 </div>
               </div>
