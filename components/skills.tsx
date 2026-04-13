@@ -10,11 +10,11 @@ export function Skills() {
     const skills = [
         {
             category: "Programming Languages",
-            items: ["C", "Python", "Java", "JavaScript", "TypeScript", "SQL"],
+            items: ["Python","JavaScript","SQL", "C", "Java", "TypeScript"],
         },
         {
             category: "Frameworks & Libraries",
-            items: ["Flask", "React", "Next.js", "React Native", "NumPy", "Pandas", "Tailwind CSS", "FastAPI"],
+            items: ["React", "Next.js", "React Native","Django", "PyTorch", "FastAPI"],
         },
         {
             category: "Tools & Technologies",
