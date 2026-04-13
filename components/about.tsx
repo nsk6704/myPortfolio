@@ -28,7 +28,7 @@ export function About() {
           <Card className="border-0 shadow-none bg-transparent">
             <CardContent className="pt-6 space-y-6">
               <p className="text-lg leading-relaxed">
-                Currently working as Full Stack Developer Intern at Ruaa Ventures Private Limited, 
+                Currently working as Software Development Engineer for Ruaa Ventures Private Limited, 
                 while pursuing a BE in Computer Science from RV College of Engineering and 
                 a BS in Data Science from IIT Madras. Based in Bengaluru, India, with a passion 
                 for building impactful software solutions that solve real-world problems.
@@ -44,11 +44,11 @@ export function About() {
                   <h3 className="font-heading text-xl mb-3">Education</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="font-bold text-lg">RV College of Engineering</p>
+                      <p className="font-bold text-lg">RV College of Engineering, Bengaluru</p>
                       <p className="text-base text-foreground/90">BE in Computer Science and Engineering (2022-2026)</p>
                     </div>
                     <div>
-                      <p className="font-medium">IIT Madras</p>
+                      <p className="font-medium">IIT Madras(Remote)</p>
                       <p className="text-sm text-foreground/80">BS in Data Science & Applications</p>
                     </div>
                   </div>
