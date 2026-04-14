@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: "Saketh Kashyap Nagendra",
     template: "%s | Saketh Kashyap Nagendra",
   },
-  description: "Software Development Engineer for Ruaa Ventures | BE CS @ RVCE | BS Data Science @ IIT Madras | Building impactful software solutions with React, Next.js, React Native, PyTorch, and AI.",
+  description: "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE ",
   keywords: [
     "Saketh Kashyap Nagendra",
     "Engineer",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Saketh Kashyap Nagendra",
-    description: "Software Development Engineer for Ruaa Ventures | BE CS @ RVCE | BS Data Science @ IIT Madras | Building impactful software solutions.",
+    description: "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE ",
     url: "https://sakethkashyap.dev",
     siteName: "Saketh Kashyap Nagendra",
     locale: "en_US",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Saketh Kashyap Nagendra",
-    description: "Software Development Engineer for Ruaa Ventures | BE CS @ RVCE | BS Data Science @ IIT Madras",
+    description: "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE ",
     creator: "@saketh_kashyap",
     images: ["https://sakethkashyap.dev/profile.jpg"],
   },
