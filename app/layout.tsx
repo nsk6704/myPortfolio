@@ -17,21 +17,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: "https://sakethkashyap.dev",
+  metadataBase: new URL("https://sakethkashyap.dev"),
+
   title: {
-    default: "Saketh Kashyap Nagendra",
+    default: "Saketh Kashyap Nagendra | Full-Stack & AI Developer",
     template: "%s | Saketh Kashyap Nagendra",
   },
-  description: "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE ",
+
+  description:
+    "Saketh Kashyap Nagendra is a Full-Stack, Mobile and AI Developer building scalable applications and intelligent systems.",
+
   keywords: [
     "Saketh Kashyap Nagendra",
-    "Engineer",
-    "Software Development Engineer",
+    "Software Engineer",
     "Full Stack Developer",
-    "Data Science",
+    "Mobile Developer",
     "Machine Learning",
-    "Frontend Developer",
-    "Backend Developer",
     "React",
     "Next.js",
     "React Native",
@@ -41,18 +42,26 @@ export const metadata: Metadata = {
     "Django",
     "FastAPI",
     "RV College of Engineering",
-    "IIT Madras",
     "Bengaluru",
   ],
+
   authors: [{ name: "Saketh Kashyap Nagendra" }],
   creator: "Saketh Kashyap Nagendra",
   publisher: "Saketh Kashyap Nagendra",
+
   alternates: {
-    canonical: "https://sakethkashyap.dev",
+    canonical: "/",
   },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
     title: "Saketh Kashyap Nagendra",
-    description: "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE ",
+    description:
+      "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE",
     url: "https://sakethkashyap.dev",
     siteName: "Saketh Kashyap Nagendra",
     locale: "en_US",
@@ -66,13 +75,16 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   twitter: {
     card: "summary",
     title: "Saketh Kashyap Nagendra",
-    description: "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE ",
+    description:
+      "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE",
     creator: "@saketh_kashyap",
     images: ["https://sakethkashyap.dev/profile.jpg"],
   },
+
   icons: {
     icon: "/profile.jpg",
     shortcut: "/profile.jpg",
@@ -80,7 +92,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ... unchanged code
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -91,11 +102,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <SiteHeader />
-          <main className="min-h-screen pt-16">
-            {children}
-          </main>
+          <main className="min-h-screen pt-16">{children}</main>
           <Toaster />
           <Analytics />
         </ThemeProvider>
