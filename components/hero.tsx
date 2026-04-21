@@ -41,10 +41,10 @@ export function Hero() {
                     >
                         Open to Collaborations
                     </motion.div>
-                    <h1 className="mb-6 text-5xl font-black leading-none md:text-7xl lg:text-8xl">
+                    <h1 className="mb-6 text-4xl font-black leading-tight sm:text-5xl md:leading-none md:text-7xl lg:text-8xl">
                         Saketh Kashyap Nagendra
                     </h1>
-                    <div className="mb-8 text-2xl font-bold md:text-3xl lg:text-4xl text-main h-10">
+                    <div className="mb-8 h-14 text-lg font-bold text-main sm:h-10 sm:text-2xl md:text-3xl lg:text-4xl">
                         <TypeAnimation
                             sequence={[
                                 'Frontend Developer',
@@ -71,15 +71,15 @@ export function Hero() {
 
                     <motion.div
                         variants={fadeInUp}
-                        className="flex flex-wrap items-center justify-center gap-4"
+                        className="flex w-full flex-wrap items-center justify-center gap-3 sm:w-auto sm:gap-4"
                     >
-                        <Link href="#projects">
-                            <Button size="lg" className="rounded-base text-base">
+                        <Link href="#projects" className="w-full sm:w-auto">
+                            <Button size="lg" className="w-full rounded-base text-base sm:w-auto">
                                 View Projects <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>
                         </Link>
-                        <Link href="/resume.pdf" target="_blank">
-                            <Button variant="neutral" size="lg" className="rounded-base text-base">
+                        <Link href="/resume.pdf" target="_blank" className="w-full sm:w-auto">
+                            <Button variant="neutral" size="lg" className="w-full rounded-base text-base sm:w-auto">
                                 Resume <Download className="ml-2 h-4 w-4" />
                             </Button>
                         </Link>
