@@ -106,12 +106,11 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
     if (typeof window === 'undefined') return { left: x, top: y }
 
     const margin = 8
-    const tooltipWidth = 320
-    const tooltipHeight = 64
+    const tooltipMaxWidth = Math.min(320, window.innerWidth - 16)
 
     return {
-      left: Math.min(Math.max(margin, x), window.innerWidth - tooltipWidth - margin),
-      top: Math.min(Math.max(margin, y), window.innerHeight - tooltipHeight - margin),
+      left: Math.min(Math.max(margin, x), window.innerWidth - tooltipMaxWidth - margin),
+      top: Math.max(margin, y),
     }
   }
 
