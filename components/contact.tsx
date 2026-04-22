@@ -54,13 +54,13 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="container py-24 sm:py-32 mx-auto px-4">
+    <section id="contact" className="container mx-auto px-4 py-16 sm:py-24 md:py-32">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-12 text-3xl font-bold md:text-5xl text-center"
+        className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl"
       >
         <TextGenerateEffect words="Get In Touch" />
       </motion.h2>
@@ -74,13 +74,13 @@ export function Contact() {
         >
           <Card className="border-2 shadow-shadow">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl">
                 <Mail className="h-5 w-5" />
                 Send me a message
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+                 <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
                   <Input

@@ -16,8 +16,8 @@ export function DeveloperStats() {
 
   if (contributionsLoading) {
     return (
-      <section className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
-        <h2 className="mb-12 text-3xl font-bold md:text-5xl text-center">
+      <section className="container mx-auto bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
+        <h2 className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl">
           Developer Metrics
         </h2>
         <div className="grid md:grid-cols-2 gap-6 max-w-7xl mx-auto mb-6">
@@ -32,13 +32,13 @@ export function DeveloperStats() {
   const showContributions = contributions?.contributions && Array.isArray(contributions.contributions) && !contributionsError
 
   return (
-    <section className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
+    <section className="container mx-auto bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-12 text-3xl font-bold md:text-5xl text-center"
+        className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl"
       >
         <TextGenerateEffect words="Developer Metrics" />
       </motion.h2>

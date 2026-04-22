@@ -91,8 +91,8 @@ export function Projects() {
   if (isLoading) {
     return (
       <GridBackground>
-        <section id="projects" className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
-          <h2 className="mb-12 text-3xl font-bold md:text-5xl text-center">Featured Projects</h2>
+        <section id="projects" className="container mx-auto bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
+          <h2 className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl">Featured Projects</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
             {[1, 2, 3, 4].map(i => (
               <Skeleton key={i} className="h-[350px] border-2" />
@@ -112,13 +112,13 @@ export function Projects() {
 
   return (
     <GridBackground>
-      <section id="projects" className="container py-24 sm:py-32 mx-auto px-4 bg-secondary-background">
+      <section id="projects" className="container mx-auto bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-3xl font-bold md:text-5xl text-center"
+          className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl"
         >
           <TextGenerateEffect words="Featured Projects" />
         </motion.h2>
@@ -133,7 +133,7 @@ export function Projects() {
             <motion.div key={index} variants={fadeInUp}>
               <Card className="flex flex-col border-2 shadow-shadow bg-background transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--border)] h-full">
                 <CardHeader>
-                  <CardTitle className="text-2xl">{project.title}</CardTitle>
+                  <CardTitle className="text-xl sm:text-2xl">{project.title}</CardTitle>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {project.tech.map((t) => (
                       <Badge key={t} variant="neutral" className="border-2 border-border font-base">
