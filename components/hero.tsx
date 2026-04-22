@@ -13,7 +13,7 @@ import Image from "next/image"
 export function Hero() {
     return (
         <GridBackground>
-            <section className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center py-20 text-center">
+            <section className="flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center py-16 text-center sm:min-h-[calc(100vh-4rem)] sm:py-20">
                 <motion.div
                     className="container mx-auto px-4 flex flex-col items-center"
                     variants={staggerContainer}
@@ -24,7 +24,7 @@ export function Hero() {
                         variants={fadeInUp}
                         className="mb-8"
                     >
-                        <div className="relative h-32 w-32 md:h-40 md:w-40 overflow-hidden rounded-full border-4 border-main shadow-shadow p-1 bg-background">
+                        <div className="relative h-28 w-28 overflow-hidden rounded-full border-4 border-main bg-background p-1 shadow-shadow sm:h-32 sm:w-32 md:h-40 md:w-40">
                             <Image
                                 src="/profile.jpg"
                                 alt="Saketh Kashyap Nagendra"
@@ -37,14 +37,14 @@ export function Hero() {
 
                     <motion.div
                         variants={fadeInUp}
-                        className="mb-8 inline-block rounded-base border-2 border-border bg-main px-4 py-1.5 font-heading text-sm font-bold text-main-foreground shadow-shadow"
+                        className="mb-6 inline-block rounded-base border-2 border-border bg-main px-3 py-1.5 font-heading text-xs font-bold text-main-foreground shadow-shadow sm:mb-8 sm:px-4 sm:text-sm"
                     >
                         Open to Collaborations
                     </motion.div>
-                    <h1 className="mb-6 text-4xl font-black leading-tight sm:text-5xl md:leading-none md:text-7xl lg:text-8xl">
+                    <h1 className="mb-5 text-3xl font-black leading-tight sm:mb-6 sm:text-5xl md:text-7xl md:leading-none lg:text-8xl">
                         Saketh Kashyap Nagendra
                     </h1>
-                    <div className="mb-8 h-14 text-lg font-bold text-main sm:h-10 sm:text-2xl md:text-3xl lg:text-4xl">
+                    <div className="mb-7 h-16 text-base font-bold text-main sm:mb-8 sm:h-10 sm:text-2xl md:text-3xl lg:text-4xl">
                         <TypeAnimation
                             sequence={[
                                 'Frontend Developer',
@@ -63,7 +63,7 @@ export function Hero() {
 
                     <motion.p
                         variants={fadeInUp}
-                        className="mx-auto mb-8 max-w-2xl text-lg font-medium md:text-xl"
+                        className="mx-auto mb-8 max-w-2xl text-base font-medium sm:text-lg md:text-xl"
                     >
 
                         Based in Bengaluru, India
@@ -87,18 +87,18 @@ export function Hero() {
 
                     <motion.div
                         variants={fadeInUp}
-                        className="mt-12 flex justify-center space-x-6"
+                        className="mt-10 flex justify-center space-x-5 sm:mt-12 sm:space-x-6"
                     >
                         <Link href="https://github.com/nsk6704" target="_blank" className="hover:text-main transition-colors">
-                            <Github className="h-8 w-8" />
+                            <Github className="h-7 w-7 sm:h-8 sm:w-8" />
                             <span className="sr-only">GitHub</span>
                         </Link>
                         <Link href="https://www.linkedin.com/in/saketh-kashyap-nagendra" target="_blank" className="hover:text-main transition-colors">
-                            <Linkedin className="h-8 w-8" />
+                            <Linkedin className="h-7 w-7 sm:h-8 sm:w-8" />
                             <span className="sr-only">LinkedIn</span>
                         </Link>
                         <Link href="mailto:sakethkashyap.nagendra@gmail.com" className="hover:text-main transition-colors">
-                            <Mail className="h-8 w-8" />
+                            <Mail className="h-7 w-7 sm:h-8 sm:w-8" />
                             <span className="sr-only">Email</span>
                         </Link>
                     </motion.div>

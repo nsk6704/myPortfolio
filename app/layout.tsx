@@ -109,7 +109,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SiteHeader />
-          <main className="min-h-screen pt-16">{children}</main>
+          <main className="min-h-screen pt-14 md:pt-16">{children}</main>
           <Toaster />
           <Analytics />
         </ThemeProvider>

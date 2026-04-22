@@ -32,13 +32,13 @@ export function Skills() {
     ]
 
     return (
-        <section id="skills" className="container py-24 sm:py-32 mx-auto px-4">
+        <section id="skills" className="container mx-auto px-4 py-16 sm:py-24 md:py-32">
             <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="mb-12 text-3xl font-bold md:text-5xl text-center"
+                className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl"
             >
                 <TextGenerateEffect words="Skills & Certifications" />
             </motion.h2>
@@ -51,7 +51,7 @@ export function Skills() {
                 className="grid gap-8 md:grid-cols-2"
             >
                 <motion.div variants={fadeInUp} className="space-y-8">
-                    <h3 className="text-2xl font-bold font-heading">Technical Skills</h3>
+                    <h3 className="font-heading text-xl font-bold sm:text-2xl">Technical Skills</h3>
                     <div className="grid gap-6">
                         {skills.map((skillGroup, index) => (
                             <Card key={index} className="shadow-shadow border-2">
@@ -73,7 +73,7 @@ export function Skills() {
                 </motion.div>
 
                 <motion.div variants={fadeInUp} className="space-y-8">
-                    <h3 className="text-2xl font-bold font-heading">Certifications</h3>
+                    <h3 className="font-heading text-xl font-bold sm:text-2xl">Certifications</h3>
                     <Card className="shadow-shadow border-2 h-full">
                         <CardContent className="pt-6">
                             <ul className="space-y-4">

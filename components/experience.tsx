@@ -46,20 +46,20 @@ export function Experience() {
     ]
 
     return (
-        <section id="experience" className="container py-24 sm:py-32 mx-auto px-4">
-            <h2 className="mb-12 text-3xl font-bold md:text-5xl text-center">Experience</h2>
+        <section id="experience" className="container mx-auto px-4 py-16 sm:py-24 md:py-32">
+            <h2 className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl">Experience</h2>
             <div className="mx-auto grid max-w-4xl gap-8">
                 {experiences.map((exp, index) => (
                     <Card key={index} className="border-2 shadow-shadow">
                         <CardHeader>
                             <div className="flex flex-col justify-between gap-2 md:flex-row md:items-center">
                                 <div>
-                                    <CardTitle className="text-xl">{exp.role}</CardTitle>
+                                    <CardTitle className="text-lg sm:text-xl">{exp.role}</CardTitle>
                                     <CardDescription className="text-base font-medium text-foreground">
                                         {exp.company}
                                     </CardDescription>
                                 </div>
-                                <div className="text-right text-sm text-foreground/80 md:text-left">
+                                <div className="text-left text-sm text-foreground/80 md:text-right">
                                     <p>{exp.period}</p>
                                     <p>{exp.location}</p>
                                 </div>

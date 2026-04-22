@@ -4,10 +4,10 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 export function Footer() {
     return (
         <footer id="contact" className="border-t-2 border-border bg-main text-main-foreground">
-            <div className="container mx-auto px-4 py-12 md:py-16">
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="container mx-auto px-4 py-10 sm:py-12 md:py-16">
+                <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
                     <div className="space-y-4">
-                        <h3 className="text-2xl font-bold font-heading">Saketh Kashyap Nagendra</h3>
+                        <h3 className="font-heading text-xl font-bold sm:text-2xl">Saketh Kashyap Nagendra</h3>
                         <p className="max-w-xs text-main-foreground/90">
                             Building digital experiences with code and creativity. Open for opportunities.
                         </p>
@@ -17,7 +17,7 @@ export function Footer() {
                         <h4 className="text-lg font-bold font-heading">Contact</h4>
                         <ul className="space-y-2">
                             <li>
-                                <a href="mailto:sakethkashyap.nagendra@gmail.com" className="hover:underline">
+                                <a href="mailto:sakethkashyap.nagendra@gmail.com" className="break-all text-sm hover:underline sm:text-base">
                                     sakethkashyap.nagendra@gmail.com
                                 </a>
                             </li>

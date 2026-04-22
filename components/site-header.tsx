@@ -25,11 +25,11 @@ export function SiteHeader() {
 
   return (
     <header className="fixed top-0 z-50 w-full border-b-2 border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between mx-auto px-4">
+      <div className="container mx-auto flex h-14 items-center justify-between px-3 sm:px-4 md:h-16">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="font-heading text-xl font-bold">Saketh.</span>
+          <span className="font-heading text-lg font-bold sm:text-xl">Saketh.</span>
         </Link>
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               {links.map((link) => (
@@ -45,10 +45,11 @@ export function SiteHeader() {
           </NavigationMenu>
           <button
             type="button"
-            className="inline-flex md:hidden rounded-base border-2 border-border p-2 bg-secondary-background"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-base border-2 border-border bg-secondary-background md:hidden"
             onClick={() => setMobileMenuOpen((open) => !open)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -56,13 +57,16 @@ export function SiteHeader() {
         </div>
       </div>
       {mobileMenuOpen && (
-        <nav className="border-t-2 border-border bg-background md:hidden">
-          <ul className="container mx-auto flex flex-col px-4 py-3">
+        <nav
+          id="mobile-navigation"
+          className="absolute inset-x-0 top-full border-t-2 border-border bg-background px-3 pb-4 pt-3 shadow-shadow md:hidden"
+        >
+          <ul className="mx-auto flex w-full max-w-screen-sm flex-col gap-2">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block py-2 font-heading text-sm"
+                  className="block rounded-base border-2 border-border bg-secondary-background px-3 py-3 font-heading text-base"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}

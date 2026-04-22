@@ -25,6 +25,9 @@ interface ContributionHeatmapProps {
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 // Show Mon, Wed, Fri labels only (indices 1, 3, 5)
 const DAY_LABELS: Record<number, string> = { 1: 'Mon', 3: 'Wed', 5: 'Fri' }
+const TOOLTIP_MAX_WIDTH_PX = 320
+const TOOLTIP_VIEWPORT_SIDE_GAP_PX = 16
+const TOOLTIP_VIEWPORT_MARGIN_PX = 8
 
 export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null)
@@ -95,19 +98,36 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
     }
   })
 
-  const CELL = 22   // px
-  const GAP = 4     // px
+  const CELL = 18   // px
+  const GAP = 3     // px
   const STEP = CELL + GAP
+
+  const getTooltipStyle = () => {
+    const x = tooltipPos.x + 12
+    const y = tooltipPos.y - 36
+
+    if (typeof window === 'undefined') {
+      return { left: x, top: y, maxWidth: `${TOOLTIP_MAX_WIDTH_PX}px` }
+    }
+
+    const tooltipMaxWidth = Math.min(TOOLTIP_MAX_WIDTH_PX, window.innerWidth - TOOLTIP_VIEWPORT_SIDE_GAP_PX)
+
+    return {
+      left: Math.min(Math.max(TOOLTIP_VIEWPORT_MARGIN_PX, x), window.innerWidth - tooltipMaxWidth - TOOLTIP_VIEWPORT_MARGIN_PX),
+      top: Math.max(TOOLTIP_VIEWPORT_MARGIN_PX, y),
+      maxWidth: `${tooltipMaxWidth}px`,
+    }
+  }
 
   return (
     <Card className="border-2 shadow-shadow h-full">
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-lg flex items-center gap-2">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
             <TrendingUp className="h-5 w-5" />
             GitHub Contributions
           </CardTitle>
-          <div className="flex items-center gap-2 text-sm">
+          <div className="flex items-center gap-2 text-xs sm:text-sm">
             <Flame className="h-4 w-4 text-orange-500" />
             <span className="font-bold text-orange-500">
               <CountUp end={data.currentStreak} duration={1.5} /> day streak
@@ -116,7 +136,8 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="relative flex flex-col items-center overflow-x-auto">
+        <div className="relative w-full overflow-x-auto">
+          <div className="mx-auto min-w-fit pb-2">
           {/* Month labels row */}
           <div className="flex mb-1" style={{ paddingLeft: 44 }}>
             {weeks.map((_, col) => (
@@ -174,12 +195,13 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
               ))}
             </div>
           </div>
+          </div>
 
           {/* Tooltip */}
           {hoveredDay && (
             <div
-              className="fixed bg-background border-2 border-border shadow-shadow px-3 py-2 rounded-base text-sm font-medium whitespace-nowrap z-50 pointer-events-none"
-              style={{ left: tooltipPos.x + 12, top: tooltipPos.y - 36 }}
+              className="fixed z-50 rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-medium whitespace-normal break-words shadow-shadow pointer-events-none"
+              style={getTooltipStyle()}
             >
               {new Date(hoveredDay.date + 'T12:00:00').toLocaleDateString('en-US', {
                 weekday: 'short',
