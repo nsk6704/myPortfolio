@@ -25,6 +25,8 @@ interface ContributionHeatmapProps {
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 // Show Mon, Wed, Fri labels only (indices 1, 3, 5)
 const DAY_LABELS: Record<number, string> = { 1: 'Mon', 3: 'Wed', 5: 'Fri' }
+const TOOLTIP_MAX_WIDTH_PX = 320
+const TOOLTIP_VIEWPORT_SIDE_GAP_PX = 16
 
 export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null)
@@ -103,14 +105,17 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
     const x = tooltipPos.x + 12
     const y = tooltipPos.y - 36
 
-    if (typeof window === 'undefined') return { left: x, top: y }
+    if (typeof window === 'undefined') {
+      return { left: x, top: y, maxWidth: `${TOOLTIP_MAX_WIDTH_PX}px` }
+    }
 
     const margin = 8
-    const tooltipMaxWidth = Math.min(320, window.innerWidth - 16)
+    const tooltipMaxWidth = Math.min(TOOLTIP_MAX_WIDTH_PX, window.innerWidth - TOOLTIP_VIEWPORT_SIDE_GAP_PX)
 
     return {
       left: Math.min(Math.max(margin, x), window.innerWidth - tooltipMaxWidth - margin),
       top: Math.max(margin, y),
+      maxWidth: `${tooltipMaxWidth}px`,
     }
   }
 
@@ -195,7 +200,7 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
           {/* Tooltip */}
           {hoveredDay && (
             <div
-              className="fixed z-50 max-w-[min(20rem,calc(100vw-1rem))] rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-medium whitespace-normal break-words shadow-shadow pointer-events-none"
+              className="fixed z-50 rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-medium whitespace-normal break-words shadow-shadow pointer-events-none"
               style={getTooltipStyle()}
             >
               {new Date(hoveredDay.date + 'T12:00:00').toLocaleDateString('en-US', {
