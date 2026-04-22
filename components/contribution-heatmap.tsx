@@ -99,6 +99,22 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
   const GAP = 3     // px
   const STEP = CELL + GAP
 
+  const getTooltipStyle = () => {
+    const x = tooltipPos.x + 12
+    const y = tooltipPos.y - 36
+
+    if (typeof window === 'undefined') return { left: x, top: y }
+
+    const margin = 8
+    const tooltipWidth = 320
+    const tooltipHeight = 64
+
+    return {
+      left: Math.min(Math.max(margin, x), window.innerWidth - tooltipWidth - margin),
+      top: Math.min(Math.max(margin, y), window.innerHeight - tooltipHeight - margin),
+    }
+  }
+
   return (
     <Card className="border-2 shadow-shadow h-full">
       <CardHeader className="pb-4">
@@ -117,7 +133,7 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="relative w-full overflow-x-auto">
-          <div className="mx-auto min-w-fit">
+          <div className="mx-auto min-w-fit pb-2">
           {/* Month labels row */}
           <div className="flex mb-1" style={{ paddingLeft: 44 }}>
             {weeks.map((_, col) => (
@@ -180,8 +196,8 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
           {/* Tooltip */}
           {hoveredDay && (
             <div
-              className="fixed bg-background border-2 border-border shadow-shadow px-3 py-2 rounded-base text-sm font-medium whitespace-nowrap z-50 pointer-events-none"
-              style={{ left: tooltipPos.x + 12, top: tooltipPos.y - 36 }}
+              className="fixed z-50 max-w-[min(20rem,calc(100vw-1rem))] rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-medium whitespace-normal break-words shadow-shadow pointer-events-none"
+              style={getTooltipStyle()}
             >
               {new Date(hoveredDay.date + 'T12:00:00').toLocaleDateString('en-US', {
                 weekday: 'short',
