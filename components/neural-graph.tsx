@@ -13,7 +13,7 @@ const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), { ssr: false 
 export function NeuralGraph() {
   const { theme } = useTheme()
   const graphRef = useRef<any>(null)
-  const [dimensions, setDimensions] = useState({ width: 600, height: 400 })
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
   const [isClient, setIsClient] = useState(false)
 
@@ -28,7 +28,7 @@ export function NeuralGraph() {
     const updateDimensions = () => {
       if (containerRef.current) {
         const width = containerRef.current.offsetWidth
-        const height = Math.min(400, width * 0.6)
+        const height = Math.min(360, Math.max(220, width * 0.62))
         setDimensions({ width, height })
       }
     }
@@ -60,17 +60,18 @@ export function NeuralGraph() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div ref={containerRef} className="w-full overflow-hidden rounded-base border-2 border-border relative">
-          <ForceGraph2D
-            ref={graphRef}
-            graphData={techStackData}
-            width={dimensions.width}
-            height={dimensions.height}
-            nodeLabel="label"
-            nodeRelSize={6}
-            nodeVal={(node: any) => node.size}
-            nodeColor={(node: any) => getCategoryColor(node.category)}
-            nodeCanvasObject={(node: any, ctx: any, globalScale: number) => {
+        <div ref={containerRef} className="relative min-h-[220px] w-full overflow-hidden rounded-base border-2 border-border">
+          {dimensions.width > 0 && (
+            <ForceGraph2D
+              ref={graphRef}
+              graphData={techStackData}
+              width={dimensions.width}
+              height={dimensions.height}
+              nodeLabel="label"
+              nodeRelSize={6}
+              nodeVal={(node: any) => node.size}
+              nodeColor={(node: any) => getCategoryColor(node.category)}
+              nodeCanvasObject={(node: any, ctx: any, globalScale: number) => {
               const label = node.label
               const fontSize = 12 / globalScale
               const nodeSize = node.size
@@ -112,16 +113,17 @@ export function NeuralGraph() {
                 // Move it further down: node.y + nodeSize + a gap
                 ctx.fillText(categoryLabel, node.x, node.y + nodeSize + 4)
               }
-            }}
-            linkColor={() => theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.15)'}
-            linkWidth={1.5}
-            d3AlphaDecay={0.02}
-            d3VelocityDecay={0.3}
-            enableNodeDrag={true}
-            enableZoomInteraction={true}
-            enablePanInteraction={true}
-            cooldownTime={3000}
-          />
+              }}
+              linkColor={() => theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.15)'}
+              linkWidth={1.5}
+              d3AlphaDecay={0.02}
+              d3VelocityDecay={0.3}
+              enableNodeDrag={true}
+              enableZoomInteraction={true}
+              enablePanInteraction={true}
+              cooldownTime={3000}
+            />
+          )}
         </div>
 
         {/* Legend */}

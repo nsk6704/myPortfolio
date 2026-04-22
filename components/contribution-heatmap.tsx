@@ -95,19 +95,19 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
     }
   })
 
-  const CELL = 22   // px
-  const GAP = 4     // px
+  const CELL = 18   // px
+  const GAP = 3     // px
   const STEP = CELL + GAP
 
   return (
     <Card className="border-2 shadow-shadow h-full">
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-lg flex items-center gap-2">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
             <TrendingUp className="h-5 w-5" />
             GitHub Contributions
           </CardTitle>
-          <div className="flex items-center gap-2 text-sm">
+          <div className="flex items-center gap-2 text-xs sm:text-sm">
             <Flame className="h-4 w-4 text-orange-500" />
             <span className="font-bold text-orange-500">
               <CountUp end={data.currentStreak} duration={1.5} /> day streak
@@ -116,7 +116,8 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="relative flex flex-col items-center overflow-x-auto">
+        <div className="relative w-full overflow-x-auto">
+          <div className="mx-auto min-w-fit">
           {/* Month labels row */}
           <div className="flex mb-1" style={{ paddingLeft: 44 }}>
             {weeks.map((_, col) => (
@@ -173,6 +174,7 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
                 </div>
               ))}
             </div>
+          </div>
           </div>
 
           {/* Tooltip */}

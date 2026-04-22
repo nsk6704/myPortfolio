@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import {
@@ -22,13 +22,6 @@ export function SiteHeader() {
     { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" },
   ]
-
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : ""
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [mobileMenuOpen])
 
   return (
     <header className="fixed top-0 z-50 w-full border-b-2 border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
