@@ -27,6 +27,7 @@ const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Se
 const DAY_LABELS: Record<number, string> = { 1: 'Mon', 3: 'Wed', 5: 'Fri' }
 const TOOLTIP_MAX_WIDTH_PX = 320
 const TOOLTIP_VIEWPORT_SIDE_GAP_PX = 16
+const TOOLTIP_VIEWPORT_MARGIN_PX = 8
 
 export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null)
@@ -109,12 +110,11 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
       return { left: x, top: y, maxWidth: `${TOOLTIP_MAX_WIDTH_PX}px` }
     }
 
-    const margin = 8
     const tooltipMaxWidth = Math.min(TOOLTIP_MAX_WIDTH_PX, window.innerWidth - TOOLTIP_VIEWPORT_SIDE_GAP_PX)
 
     return {
-      left: Math.min(Math.max(margin, x), window.innerWidth - tooltipMaxWidth - margin),
-      top: Math.max(margin, y),
+      left: Math.min(Math.max(TOOLTIP_VIEWPORT_MARGIN_PX, x), window.innerWidth - tooltipMaxWidth - TOOLTIP_VIEWPORT_MARGIN_PX),
+      top: Math.max(TOOLTIP_VIEWPORT_MARGIN_PX, y),
       maxWidth: `${tooltipMaxWidth}px`,
     }
   }
