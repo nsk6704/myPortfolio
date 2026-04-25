@@ -13,7 +13,7 @@ const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), { ssr: false 
 export function NeuralGraph() {
   const { theme } = useTheme()
   const graphRef = useRef<any>(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const [dimensions, setDimensions] = useState({ width: 600, height: 360 })
   const containerRef = useRef<HTMLDivElement>(null)
   const [isClient, setIsClient] = useState(false)
 
@@ -39,14 +39,15 @@ export function NeuralGraph() {
   }, [])
 
   useEffect(() => {
-    // Center and zoom graph after mount
-    if (graphRef.current) {
-      graphRef.current.zoomToFit(400, 50)
-
-      // Configure forces
-      graphRef.current.d3Force('charge').strength(-200) // Increase repulsion
-      graphRef.current.d3Force('link').distance(50) // Increase link distance
-    }
+    // Center and zoom graph after mount with delay
+    const timer = setTimeout(() => {
+      if (graphRef.current) {
+        graphRef.current.zoomToFit(400, 50)
+        graphRef.current.d3Force('charge').strength(-200)
+        graphRef.current.d3Force('link').distance(50)
+      }
+    }, 100)
+    return () => clearTimeout(timer)
   }, [])
 
   if (!isClient) return null
