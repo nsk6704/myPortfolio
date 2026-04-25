@@ -137,7 +137,7 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="relative w-full overflow-x-auto">
-          <div className="mx-auto min-w-fit pb-2">
+          <div className="mx-auto pb-2 flex flex-col items-center" style={{ minWidth: 'max-content' }}>
           {/* Month labels row */}
           <div className="flex mb-1" style={{ paddingLeft: 44 }}>
             {weeks.map((_, col) => (
@@ -152,7 +152,7 @@ export function ContributionHeatmap({ data }: ContributionHeatmapProps) {
           </div>
 
           {/* Day-of-week labels + week columns */}
-          <div className="flex items-start">
+          <div className="flex items-center">
             {/* Day labels (Sun–Sat) */}
             <div className="flex flex-col mr-1 shrink-0" style={{ gap: GAP }}>
               {Array.from({ length: 7 }, (_, i) => (
