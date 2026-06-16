@@ -16,7 +16,7 @@ export function DeveloperStats() {
 
   if (contributionsLoading) {
     return (
-      <section className="container mx-auto bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
+      <section className="container mx-auto px-4 py-16 sm:py-24 md:py-32">
         <h2 className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl">
           Developer Metrics
         </h2>
@@ -32,7 +32,7 @@ export function DeveloperStats() {
   const showContributions = contributions?.contributions && Array.isArray(contributions.contributions) && !contributionsError
 
   return (
-    <section className="container mx-auto overflow-x-hidden bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
+    <section className="container mx-auto overflow-x-hidden px-4 py-16 sm:py-24 md:py-32">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
