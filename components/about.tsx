@@ -30,12 +30,12 @@ export function About() {
               <p className="text-base leading-relaxed sm:text-lg">
                 Currently working as Software Development Engineer for Ruaa Ventures Private Limited, 
                 while pursuing a BE in Computer Science from RV College of Engineering and 
-                a BS in Data Science from IIT Madras. Based in Bengaluru, India, with a passion 
+                a BS in Data Science from IIT Madras. Based in Hyderabad, India, with a passion 
                 for building impactful software solutions that solve real-world problems.
               </p>
               <p className="text-base leading-relaxed sm:text-lg">
                 Experience spans full-stack development, machine learning, and data science, 
-                with hands-on work using cutting-edge technologies including React Native, TensorFlow, 
+                with hands-on work using cutting-edge technologies including React Native, 
                 and various AI APIs to create innovative applications in healthcare, education, 
                 and enterprise solutions.
               </p>

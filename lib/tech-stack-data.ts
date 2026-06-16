@@ -32,7 +32,6 @@ export const techStackData = {
     { id: 'nodejs', label: 'Node.js', category: 'backend', size: 7 },
 
     // ML/AI
-    { id: 'tensorflow', label: 'TensorFlow', category: 'ml', size: 9 },
     { id: 'xgboost', label: 'XGBoost', category: 'ml', size: 8 },
     { id: 'numpy', label: 'NumPy', category: 'ml', size: 7 },
     { id: 'pandas', label: 'Pandas', category: 'ml', size: 7 },
@@ -69,13 +68,10 @@ export const techStackData = {
     // Python connections
     { source: 'python', target: 'flask' },
     { source: 'python', target: 'fastapi' },
-    { source: 'python', target: 'tensorflow' },
     { source: 'python', target: 'numpy' },
     { source: 'python', target: 'pandas' },
 
     // ML connections
-    { source: 'tensorflow', target: 'numpy' },
-    { source: 'tensorflow', target: 'pandas' },
     { source: 'xgboost', target: 'python' },
     { source: 'xgboost', target: 'numpy' },
     { source: 'xgboost', target: 'pandas' },

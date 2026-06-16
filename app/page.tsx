@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <h1 className="sr-only">Saketh Kashyap Nagendra - Software Development Engineer for Ruaa Ventures, BE CS at RV College of Engineering, BS Data Science at IIT Madras</h1>
       <div className="sr-only">
-        <p>Saketh Kashyap Nagendra is a Software Development Engineer at Ruaa Ventures Private Limited. Based in Bengaluru, Saketh Kashyap Nagendra is pursuing a BE in Computer Science at RV College of Engineering and a BS in Data Science at IIT Madras.</p>
+        <p>Saketh Kashyap Nagendra is a Software Development Engineer at Ruaa Ventures Private Limited. Based in Hyderabad, Saketh Kashyap Nagendra is pursuing a BE in Computer Science at RV College of Engineering and a BS in Data Science at IIT Madras.</p>
       </div>
       <script
         type="application/ld+json"
@@ -55,7 +55,6 @@ export default function Home() {
               "TypeScript",
               "Python",
               "PyTorch",
-              "TensorFlow",
               "Django",
               "FastAPI",
               "Full Stack Development",
@@ -68,7 +67,7 @@ export default function Home() {
             ],
             address: {
               "@type": "PostalAddress",
-              addressLocality: "Bengaluru",
+              addressLocality: "Hyderabad",
               addressRegion: "Karnataka",
               addressCountry: "IN",
             },
