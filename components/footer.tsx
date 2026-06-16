@@ -25,7 +25,7 @@ export function Footer() {
                                 <p>(+91) 7093445470</p>
                             </li>
                             <li>
-                                <p>Bengaluru, India</p>
+                                 <p>Hyderabad, India</p>
                             </li>
                         </ul>
                     </div>

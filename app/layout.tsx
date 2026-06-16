@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { SiteHeader } from "@/components/site-header";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/next";
+import { KonamiEasterEgg } from "@/components/konami-easter-egg";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     "Django",
     "FastAPI",
     "RV College of Engineering",
-    "Bengaluru",
+    "Hyderabad",
   ],
 
   authors: [{ name: "Saketh Kashyap Nagendra" }],
@@ -112,6 +113,7 @@ export default function RootLayout({
           <main className="min-h-screen pt-14 md:pt-16">{children}</main>
           <Toaster />
           <Analytics />
+          <KonamiEasterEgg />
         </ThemeProvider>
       </body>
     </html>
