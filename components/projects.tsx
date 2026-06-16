@@ -25,6 +25,8 @@ interface Project {
     demo: string | null
   }
   metric?: string
+  image?: string
+  imageDark?: string
 }
 
 export function Projects() {
@@ -33,11 +35,11 @@ export function Projects() {
   const getFeaturedProjects = (): Project[] => {
     const projects: Project[] = []
 
-    // Add GitHub projects
     if (repos && Array.isArray(repos)) {
       const credify = repos.find((r) => r.name === 'Credify')
       const interview = repos.find((r) => r.name === 'InterviewAssistant')
-      const algoviz = repos.find((r) => r.name === 'Algoviz')
+      const prodready = repos.find((r) => r.name === 'ProdReady')
+      const upwell = repos.find((r) => r.name === 'upwell-website')
 
       if (credify) {
         projects.push({
@@ -61,25 +63,41 @@ export function Projects() {
             github: interview.html_url,
             demo: interview.homepage
           },
-          metric: PROJECT_METRICS.InterviewAssistant
+          metric: PROJECT_METRICS.InterviewAssistant,
+          image: '/interview-assitant.webp',
         })
       }
 
-      if (algoviz) {
+      if (prodready) {
         projects.push({
-          title: 'AlgoViz',
-          description: PROJECT_DESCRIPTIONS.Algoviz,
-          tech: ['Next.js', 'FastAPI', 'LLaMA 3', 'Tailwind'],
+          title: 'ProdReady',
+          description: PROJECT_DESCRIPTIONS.ProdReady,
+          tech: ['Next.js', 'TypeScript', 'Prisma', 'Tailwind CSS'],
           links: {
-            github: algoviz.html_url,
-            demo: algoviz.homepage || 'https://algoviz-iota.vercel.app'
+            github: prodready.html_url,
+            demo: prodready.homepage
           },
-          metric: PROJECT_METRICS.Algoviz
+          metric: PROJECT_METRICS.ProdReady,
+          image: '/prodready-light.webp',
+          imageDark: '/prodready-dark.webp',
+        })
+      }
+
+      if (upwell) {
+        projects.push({
+          title: 'UpWell',
+          description: PROJECT_DESCRIPTIONS.UpWell,
+          tech: ['React', 'Vite', 'JavaScript'],
+          links: {
+            github: upwell.html_url,
+            demo: upwell.homepage
+          },
+          metric: PROJECT_METRICS.UpWell,
+          image: '/upwell.webp',
         })
       }
     }
 
-    // Add custom project (AgriGuard)
     projects.push({
       ...CUSTOM_PROJECTS.AgriGuard,
       metric: PROJECT_METRICS.AgriGuard
@@ -91,7 +109,7 @@ export function Projects() {
   if (isLoading) {
     return (
       <GridBackground>
-        <section id="projects" className="container mx-auto bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
+        <section id="projects" className="container mx-auto px-4 py-16 sm:py-24 md:py-32">
           <h2 className="mb-8 text-center text-2xl font-bold sm:mb-10 sm:text-3xl md:mb-12 md:text-5xl">Featured Projects</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
             {[1, 2, 3, 4].map(i => (
@@ -104,7 +122,6 @@ export function Projects() {
   }
 
   if (error) {
-    // If API fails, show fallback projects
     console.error('Failed to load projects from GitHub:', error)
   }
 
@@ -112,7 +129,7 @@ export function Projects() {
 
   return (
     <GridBackground>
-      <section id="projects" className="container mx-auto bg-secondary-background px-4 py-16 sm:py-24 md:py-32">
+      <section id="projects" className="container mx-auto px-4 py-16 sm:py-24 md:py-32">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -131,50 +148,80 @@ export function Projects() {
         >
           {projects.map((project, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <Card className="flex flex-col border-2 shadow-shadow bg-background transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--border)] h-full">
-                <CardHeader>
-                  <CardTitle className="text-xl sm:text-2xl">{project.title}</CardTitle>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {project.tech.map((t) => (
-                      <Badge key={t} variant="neutral" className="border-2 border-border font-base">
-                        {t}
-                      </Badge>
-                    ))}
-                  </div>
-                  {project.metric && (
-                    <div className="mt-2">
-                      <Badge variant="neutral" className="border-2 border-main text-main font-medium bg-main/10">
-                        {project.metric}
-                      </Badge>
-                    </div>
-                  )}
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <p className="text-foreground/90">{project.description}</p>
-                </CardContent>
-                <CardFooter className="flex gap-4">
-                  {project.links.github && (
-                    <Link href={project.links.github} target="_blank" className="flex-1">
-                      <Button size="sm" variant="neutral" className="w-full">
-                        <Github className="mr-2 h-4 w-4" /> Code
-                      </Button>
+              <div>
+                <Card className="flex flex-col border-2 shadow-shadow bg-background transition-shadow hover:shadow-[8px_8px_0px_0px_var(--border)] h-full cursor-default overflow-hidden">
+                  {project.image && (
+                    <Link href={project.links.demo || project.links.github || '#'} target="_blank">
+                      <div className="border-b-2 border-border bg-muted group cursor-pointer">
+                        <div className="mx-auto max-w-[85%] py-4 transition-opacity group-hover:opacity-80">
+                          {project.imageDark ? (
+                            <>
+                              <img
+                                src={project.image}
+                                alt={`${project.title} screenshot`}
+                                className="w-full h-auto rounded-sm border border-border dark:hidden"
+                              />
+                              <img
+                                src={project.imageDark}
+                                alt={`${project.title} screenshot dark`}
+                                className="w-full h-auto rounded-sm border border-border hidden dark:block"
+                              />
+                            </>
+                          ) : (
+                            <img
+                              src={project.image}
+                              alt={`${project.title} screenshot`}
+                              className="w-full h-auto rounded-sm border border-border"
+                            />
+                          )}
+                        </div>
+                      </div>
                     </Link>
                   )}
-                  {project.links.demo && (
-                    <Link href={project.links.demo} target="_blank" className="flex-1">
-                      <Button size="sm" className="w-full">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        {project.title === 'Credify' ? 'Landing Page' : 'Live Demo'}
-                      </Button>
-                    </Link>
-                  )}
-                  {!project.links.github && !project.links.demo && (
-                    <div className="flex-1 text-center text-sm text-foreground/60">
-                      Links coming soon
+                  <CardHeader>
+                    <CardTitle className="text-xl sm:text-2xl">{project.title}</CardTitle>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {project.tech.map((t) => (
+                        <Badge key={t} variant="neutral" className="border-2 border-border font-base">
+                          {t}
+                        </Badge>
+                      ))}
                     </div>
-                  )}
-                </CardFooter>
-              </Card>
+                    {project.metric && (
+                      <div className="mt-2">
+                        <Badge variant="neutral" className="border-2 border-main text-main font-medium bg-main/10">
+                          {project.metric}
+                        </Badge>
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent className="flex-1">
+                    <p className="text-foreground/90">{project.description}</p>
+                  </CardContent>
+                  <CardFooter className="flex gap-4">
+                    {project.links.github && (
+                      <Link href={project.links.github} target="_blank" className="flex-1">
+                        <Button size="sm" variant="neutral" className="w-full">
+                          <Github className="mr-2 h-4 w-4" /> Code
+                        </Button>
+                      </Link>
+                    )}
+                    {project.links.demo && (
+                      <Link href={project.links.demo} target="_blank" className="flex-1">
+                        <Button size="sm" className="w-full">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          {project.title === 'Credify' || project.title === 'UpWell' ? 'Landing Page' : 'Live Demo'}
+                        </Button>
+                      </Link>
+                    )}
+                    {!project.links.github && !project.links.demo && (
+                      <div className="flex-1 text-center text-sm text-foreground/60">
+                        Links coming soon
+                      </div>
+                    )}
+                  </CardFooter>
+                </Card>
+              </div>
             </motion.div>
           ))}
         </motion.div>

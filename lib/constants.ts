@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   title: 'Software Engineer & Data Science Student',
   description: 'Software Engineering Intern at Boeing | Data Science Student at IIT Madras',
   email: 'sakethkashyap.nagendra@gmail.com',
-  location: 'Bengaluru, India',
+  location: 'Hyderabad, India',
   github: 'https://github.com/nsk6704',
   linkedin: 'https://www.linkedin.com/in/saketh-kashyap-nagendra/',
   leetcode: 'https://leetcode.com/u/saketh6704/',
@@ -15,21 +15,24 @@ export const SITE_CONFIG = {
 export const FEATURED_PROJECTS = [
   'Credify',
   'InterviewAssistant',
-  'Algoviz',
+  'ProdReady',
+  'UpWell',
 ]
 
 // Project descriptions for GitHub repos
 export const PROJECT_DESCRIPTIONS: Record<string, string> = {
   Credify: 'A personal wellness and finance tracker designed as an all-in-one companion for monitoring habits, financial goals, and overall well-being. Built to help users maintain a balanced lifestyle.',
   InterviewAssistant: 'An AI-powered interview practice application built with FastAPI, React, and Groq\'s Llama 3.3 models. Designed to simulate realistic technical interviews with a focus on conversational quality, adaptability, and professional feedback.',
-  Algoviz: 'A full-stack platform with 15+ visualized algorithms across sorting, graphs, AI/ML, and theory of computation. Built with Next.js, FastAPI, and LLaMA 3 for interactive learning with step controls and zoom/pan support.',
+  ProdReady: 'A production readiness checker that scans any public GitHub repo across 14 health checks — from CI/CD and testing to error handling and monitoring. Built with Next.js, Prisma, and the GitHub API.',
+  UpWell: 'Landing page for UpWell — an Android app for tracking habits, finances, and well-being with gamification. Features XP systems, streaks, and fully private local storage.',
 }
 
 // Project complexity metrics (replaces star/fork counts)
 export const PROJECT_METRICS: Record<string, string> = {
   Credify: 'Wellness & Finance',
   InterviewAssistant: 'AI-Powered Tool',
-  Algoviz: '15+ Visualizations',
+  ProdReady: '14 Health Checks',
+  UpWell: 'Habits • Finance • Wellness',
   AgriGuard: '37 Classes • CNN Model',
 }
 
