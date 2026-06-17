@@ -26,7 +26,7 @@ export function Skills() {
         },
         {
             category: "Tools & Technologies",
-            items: ["Git", "pgAdmin", "Firebase", "Vim", "Docker", "Postman"],
+            items: ["Git", "Vim", "Docker", "Neon", "PostgreSQL", "GitHub", "Vercel"],
         },
     ]
 

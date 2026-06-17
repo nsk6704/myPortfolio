@@ -39,8 +39,10 @@ export const techStackData = {
     // Tools
     { id: 'git', label: 'Git', category: 'tools', size: 9 },
     { id: 'docker', label: 'Docker', category: 'tools', size: 7 },
-    { id: 'firebase', label: 'Firebase', category: 'tools', size: 6 },
-    { id: 'postman', label: 'Postman', category: 'tools', size: 6 },
+    { id: 'neon', label: 'Neon', category: 'tools', size: 6 },
+    { id: 'postgresql', label: 'PostgreSQL', category: 'tools', size: 7 },
+    { id: 'github', label: 'GitHub', category: 'tools', size: 8 },
+    { id: 'vercel', label: 'Vercel', category: 'tools', size: 7 },
   ] as TechNode[],
 
   links: [
@@ -84,9 +86,10 @@ export const techStackData = {
 
     // Tools connections
     { source: 'git', target: 'docker' },
-    { source: 'firebase', target: 'react' },
-    { source: 'firebase', target: 'react-native' },
-    { source: 'postman', target: 'git' },
+    { source: 'neon', target: 'postgresql' },
+    { source: 'postgresql', target: 'sql' },
+    { source: 'github', target: 'git' },
+    { source: 'vercel', target: 'nextjs' },
   ] as TechLink[],
 }
 
