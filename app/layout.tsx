@@ -43,7 +43,6 @@ export const metadata: Metadata = {
     "Django",
     "FastAPI",
     "RV College of Engineering",
-    "Hyderabad",
   ],
 
   authors: [{ name: "Saketh Kashyap Nagendra" }],
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Saketh Kashyap Nagendra",
     description:
-      "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE",
+      "Software Development Engineer | Full-Stack & AI Developer",
     url: "https://sakethkashyap.dev",
     siteName: "Saketh Kashyap Nagendra",
     locale: "en_US",
@@ -81,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Saketh Kashyap Nagendra",
     description:
-      "Software Development Engineer for Ruaa Ventures | BE CSE @ RVCE",
+      "Software Development Engineer | Full-Stack & AI Developer",
     creator: "@saketh_kashyap",
     images: ["https://sakethkashyap.dev/profile.jpg"],
   },

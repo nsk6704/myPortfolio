@@ -107,12 +107,7 @@ export function Hero() {
               />
             </div>
 
-            <motion.p
-              variants={fadeInUp}
-              className="mx-auto mb-8 max-w-2xl text-base font-medium sm:text-lg md:text-xl"
-            >
-              Based in Hyderabad, India
-            </motion.p>
+
 
             <motion.div
               variants={fadeInUp}
