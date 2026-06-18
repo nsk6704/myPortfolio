@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <h1 className="sr-only">Saketh Kashyap Nagendra - Software Development Engineer for Ruaa Ventures, BE CS at RV College of Engineering, BS Data Science at IIT Madras</h1>
+      <h1 className="sr-only">Saketh Kashyap Nagendra - Software Development Engineer | Full-Stack & AI Developer</h1>
       <div className="sr-only">
-        <p>Saketh Kashyap Nagendra is a Software Development Engineer at Ruaa Ventures Private Limited. Based in Hyderabad, Saketh Kashyap Nagendra is pursuing a BE in Computer Science at RV College of Engineering and a BS in Data Science at IIT Madras.</p>
+        <p>Saketh Kashyap Nagendra is joining HSBC as a Software Engineer. Recently completed a BE in Computer Science from RV College of Engineering. Passionate about building software that makes a difference.</p>
       </div>
       <script
         type="application/ld+json"
@@ -67,7 +67,7 @@ export default function Home() {
             ],
             address: {
               "@type": "PostalAddress",
-              addressLocality: "Hyderabad",
+              addressLocality: "Bengaluru",
               addressRegion: "Karnataka",
               addressCountry: "IN",
             },

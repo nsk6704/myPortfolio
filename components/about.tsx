@@ -28,16 +28,14 @@ export function About() {
           <Card className="border-0 shadow-none bg-transparent">
             <CardContent className="pt-6 space-y-6">
               <p className="text-base leading-relaxed sm:text-lg">
-                Currently working as Software Development Engineer for Ruaa Ventures Private Limited, 
-                while pursuing a BE in Computer Science from RV College of Engineering and 
-                a BS in Data Science from IIT Madras. Based in Hyderabad, India, with a passion 
-                for building impactful software solutions that solve real-world problems.
+                Joining HSBC as a Software Engineer. Recently completed a BE in Computer
+                Science from RV College of Engineering. Passionate about building software
+                that actually makes a difference.
               </p>
               <p className="text-base leading-relaxed sm:text-lg">
-                Experience spans full-stack development, machine learning, and data science, 
-                with hands-on work using cutting-edge technologies including React Native, 
-                and various AI APIs to create innovative applications in healthcare, education, 
-                and enterprise solutions.
+                My experience spans full-stack development, mobile engineering, and applied ML,
+                working with React, Next.js, React Native, Python, and various AI APIs to
+                deliver products across healthcare, education, and enterprise.
               </p>
               <div className="grid md:grid-cols-2 gap-6 pt-4">
                 <div>
@@ -45,7 +43,7 @@ export function About() {
                   <div className="space-y-4">
                     <div>
                       <p className="text-base font-bold sm:text-lg">RV College of Engineering, Bengaluru</p>
-                      <p className="text-base text-foreground/90">BE in Computer Science and Engineering (2022-2026)</p>
+                      <p className="text-base text-foreground/90">BE in Computer Science and Engineering · Completed (2022-2026)</p>
                     </div>
                     <div>
                       <p className="font-medium">IIT Madras(Remote)</p>
